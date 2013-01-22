@@ -1,0 +1,31 @@
+snippet ajax
+abbr	ajax
+prev_word   '^'
+	$.ajax({
+		url: "${1:url}",
+		type: "${2:POST}",
+		dataType: "${3:xml/html/script/json}",
+		data: ${4:Element or Expression}",
+
+		complete: function() {
+			${5://called when complete}
+		},
+
+		success: function() {
+			${6://called when successful}
+		},
+
+		error: function() {
+			${7://called when there is an error}
+		},
+	});
+snippet hide
+	${1:obj}.hide('${2:slow/400/fast}')${3}
+snippet css
+	${1:obj}.css('${2:attribute}', '${3:value}')${4}
+snippet click
+	${1:obj}.click(function() {
+		${2:// Act on the event}
+	});
+snippet parent
+	${1:obj}.parent('${2:selector expression}')${3}

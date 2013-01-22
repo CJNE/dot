@@ -1,0 +1,5 @@
+snippet param 
+	$this->_getParam('${1:param}',${2:false});
+
+snippet ifparam
+	if(empty($${1:param})) throw new Exception('${2:$1 is missing}');

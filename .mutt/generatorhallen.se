@@ -1,0 +1,10 @@
+# .mutt/account.example
+set from=johan@generatorhallen.se
+set hostname="generatorhallen.se"
+set folder="imaps://imap.gmail.com/"
+set postponed="+[Gmail]/Utkast"
+set record="+[Gmail]/Skickade mail"
+set spoolfile="imaps://imap.gmail.com/INBOX"
+set signature="~/.mutt/signature"
+set smtp_url="smtp://johan\@generatorhallen.se@smtp.gmail.com:587" smtp_pass="$my_pw_generatorhallen"
+set imap_check_subscribed=yes

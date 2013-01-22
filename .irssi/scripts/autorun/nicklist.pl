@@ -1,0 +1,1 @@
+/Users/johan/.irssi/scripts/nicklist.pl
