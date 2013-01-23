@@ -100,7 +100,7 @@
 .vim-janus/
 .vim.20120307
 .vim.backup
-.vim/
+/.vim-fuf-data
 .vimbackup/
 .vimgolf/
 .viminfo
