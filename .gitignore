@@ -102,6 +102,7 @@
 .vim.backup
 /.vim-fuf-data
 .vimbackup/
+.vimfuzzyfinder
 .vimgolf/
 .viminfo
 .viminfobak
