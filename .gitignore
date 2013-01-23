@@ -17,6 +17,7 @@
 /.ssh/*
 !/.ssh/config
 /oldconfigs
+/.history
 /.pry_history
 /.weechat/logs
 /.weechat/weechat.log
@@ -123,18 +124,13 @@
 .zcompdump
 .zcompdump.zwc
 .zhistory
-.zlogin
-.zlogout
 .zprezto
 .zpreztorc
-.zprofile
 .zsh-update
 .zsh.after/
 .zsh.before/
 .zsh/
 .zsh_history
-.zshenv
-.zshrc
 .zshrc-johan
 .zshrc.pre-oh-my-zsh
 .~lock.aktiverings.odt#
