@@ -1,4 +1,5 @@
 *.DS_Store
+*.pyc
 /.heroku
 /.mysql_history
 /.gdb_history
@@ -16,6 +17,10 @@
 /.ssh/*
 !/.ssh/config
 /oldconfigs
+/.pry_history
+/.weechat/logs
+/.weechat/weechat.log
+/.weechat/xfer
 /Applications
 /Applications\ \(Parallels\)
 /Downloads
@@ -33,6 +38,7 @@
 /.offlineimap
 /.mail
 /work
+/tools
 /play
 /vms
 /chef-repo
