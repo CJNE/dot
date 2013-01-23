@@ -28,7 +28,10 @@
 /Desktop
 /Documents
 /Google\ Drive
-/Library
+/Library/*
+!/Library/KeyBindings
+!/Library/AppleScripts
+!/Library/Keyboard\ Layouts
 /Pictures
 /Music
 /Public
@@ -168,7 +171,7 @@ jdbc/
 jmeter/
 johan.pem
 johan@anaconda
-johans.keylayout
+/johans.keylayout
 johanssh
 macosx_bootstrap.sh
 maildata.txt
