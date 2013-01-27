@@ -97,6 +97,7 @@
 .tmp/
 .urlview
 .vagrant.d/
+/.vim/.netrwhist
 .vim-cache/
 .vim-janus/
 .vim.20120307
@@ -129,7 +130,6 @@
 .zsh-update
 .zsh.after/
 .zsh.before/
-.zsh/
 .zsh_history
 .zshrc-johan
 .zshrc.pre-oh-my-zsh

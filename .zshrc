@@ -45,6 +45,7 @@ export ACK_COLOR_MATCH='red'
 alias r=rails
 alias t="script/test $*"
 alias f="script/features $*"
+alias weechat="TERM=screen-256color weechat-curses"
 function mcd() { mkdir -p $1 && cd $1 }
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
