@@ -1,3 +1,4 @@
+eval "$(fasd --init auto)"
 # Set custom prompt
 setopt PROMPT_SUBST
 autoload -U promptinit
