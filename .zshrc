@@ -30,7 +30,10 @@ export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
+
 # Use vim as the editor
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 export EDITOR=vi
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
