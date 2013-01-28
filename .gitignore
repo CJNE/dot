@@ -16,6 +16,7 @@
 /.mutt/cache
 /.ssh/*
 !/.ssh/config
+/.zsh/cache
 /oldconfigs
 /.history
 /.pry_history
