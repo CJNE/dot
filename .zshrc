@@ -9,8 +9,12 @@ prompt grb
 autoload -U compinit
 compinit
 
+#Java
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export EC2_HOME="$HOME/ec2-api-tools"
+export PATH="$EC2_HOME/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 # Colorize terminal
