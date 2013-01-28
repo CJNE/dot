@@ -18,10 +18,11 @@ export PATH="$EC2_HOME/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 # Colorize terminal
+eval `gdircolors $HOME/.dir_colors`
 export TERM='xterm-256color'
-alias ls='ls -G'
-alias ll='ls -lG'
-export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+alias ls='gls --color=auto'
+alias ll='gls -l --color=auto'
+#export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
 # Nicer history
