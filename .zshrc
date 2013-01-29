@@ -25,18 +25,62 @@ alias ll='gls -l --color=auto'
 #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
+
+# I don't need the arrow keys, I use ^N and ^P for this (see below).
+bindkey -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
+# Also not in Vi mode.
+bindkey -a -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
+
 # Nicer history
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
+# Append to the history file instead of overwriting it and do it immediately
+# when a command is executed.
+setopt appendhistory
+setopt incappendhistory
+# If the same command is run multiple times store it only once in the history.
+setopt histignoredups
+# Don't add lines starting with a space to the history.
+setopt histignorespace
+# Vim like completions of previous executed commands (also enter Vi-mode). If
+# called at the beginning it just recalls old commands (like cursor up), if
+# called after typing something, only lines starting with the typed text are
+# returned. Very useful to get old commands quickly - in addition to the
+# history commands (!..). Thanks to Mikachu in #zsh on Freenode (2010-01-17
+# 12:47 CET) for the information how to a use function with bindkey.
+zle -N my-vi-history-beginning-search-backward
+my-vi-history-beginning-search-backward() {
+    local not_at_beginning_of_line
+    if [[ $CURSOR -ne 0 ]]; then
+        not_at_beginning_of_line=yes
+    fi
+
+    zle history-beginning-search-backward
+
+    # Start Vi-mode and stay at the same position (Vi-mode moves one left,
+    # this counters it).
+    zle vi-cmd-mode
+    if [[ -n $not_at_beginning_of_line ]]; then
+        zle vi-forward-char
+    fi
+}
+bindkey '^P' my-vi-history-beginning-search-backward
+bindkey -a '^P' history-beginning-search-backward # binding for Vi-mode
+# Here only Vi-mode is necessary as ^P enters Vi-mode and ^N only makes sense
+# after calling ^P.
+bindkey -a '^N' history-beginning-search-forward
 
 # Use vim as the editor
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 export EDITOR=vi
-# GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 set -o vi
+
+# Use jj and jk to exit insert mode.
+bindkey 'jj' vi-cmd-mode
+bindkey 'jk' vi-cmd-mode
 
 # Use C-x C-e to edit the current command line
 autoload -U edit-command-line
