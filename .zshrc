@@ -1,4 +1,3 @@
-eval "$(fasd --init auto)"
 # Set custom prompt
 setopt PROMPT_SUBST
 autoload -U promptinit
@@ -16,6 +15,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 export EC2_HOME="$HOME/ec2-api-tools"
 export PATH="$EC2_HOME/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+eval "$(fasd --init auto)"
 
 # Colorize terminal
 eval `gdircolors $HOME/.dir_colors`
