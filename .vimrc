@@ -256,20 +256,45 @@ function! ShowRoutes()
   :normal dd
 endfunction
 map <leader>gR :call ShowRoutes()<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+"map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+"map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+"map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+"map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+"map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+"map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+"map <leader>gs :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
+"map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
+"map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
+"map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+"map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>f :CtrlP<cr>
+nmap <leader>F :CtrlP %%<cr>
+"RoR CtrlP stuff
+nmap <leader>fc :CtrlP app/controllers<cr>
+nmap <leader>fa :CtrlP app<cr>
+nmap <leader>fm :CtrlP app/models<cr>
+nmap <leader>fv :CtrlP app/views<cr>
+nmap <leader>fh :CtrlP app/helpers<cr>
+nmap <leader>fp :CtrlP app/public<cr>
+nmap <leader>fs :CtrlP app/assets/stylesheets<cr>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip  
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_user_command = { 
+      \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files'],
+      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+      \ },
+      \ 'fallback': 'find %s -type f'
+      \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! OpenTestAlternate()
