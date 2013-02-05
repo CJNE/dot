@@ -138,20 +138,6 @@ endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-      return "\<c-p>"
-    endif
-endfunction
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-"inoremap <s-tab> <c-n>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
@@ -289,8 +275,32 @@ autocmd InsertLeave * :set relativenumber
 " UlitSnip
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsListSnippets='<leader>q'
+let g:UltiSnipsListSnippets='<s-tab>'
 nmap <leader>s :UltiSnipsEdit<cr>
+let g:ulti_expand_or_jump_res = 0 "default value, just set once
+function! Ulti_ExpandOrJump_and_getRes()
+ call UltiSnips_ExpandSnippetOrJump()
+ return g:ulti_expand_or_jump_res
+endfunction
+"inoremap <tab> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":InsertTabWrapper()<cr>
+      
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    call UltiSnips_ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res < 1
+      let col = col('.') - 1
+      if !col || getline('.')[col - 1] !~ '\k'
+          return "\<tab>"
+      else
+        return "\<c-p>"
+      endif
+    endif
+endfunction
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <s-tab> <c-n>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP 
