@@ -105,6 +105,14 @@ augroup END
 :color solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Powerline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+"let g:Powerline_theme = 'solarized256'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
@@ -269,6 +277,13 @@ map <leader>gg :topleft 100 :split Gemfile<cr>
 "map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 "map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Relative line numbers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UlitSnip
