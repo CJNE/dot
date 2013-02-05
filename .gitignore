@@ -14,6 +14,7 @@
 /.Xauthority
 /.lesshst
 /.mutt/cache
+/.mutt/temp
 /.ssh/*
 !/.ssh/config
 /.zsh/cache
