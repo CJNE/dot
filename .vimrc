@@ -107,6 +107,9 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages")
+"python from powerline.bindings.vim import source_plugin; source_plugin()
+"source .vim/bundle/powerline/powerline/bindings/vim/plugin/source_plugin.vim
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_theme = 'solarized256'
