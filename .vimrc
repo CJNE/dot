@@ -62,6 +62,7 @@ let mapleader=","
 ":inoremap <C-c> <esc> 
 " disable backspace (force use of <C-h>, and <C-w>)
 :inoremap <bs> <nop>
+:inoremap <c-d> <del>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
