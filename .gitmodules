@@ -40,3 +40,6 @@
 [submodule "/Users/johan/.vim/bundle/syntastic"]
 	path = /Users/johan/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/vim-arduino"]
+	path = .vim/bundle/vim-arduino
+	url = https://github.com/tclem/vim-arduino.git
