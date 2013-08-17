@@ -27,7 +27,7 @@
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule ".vim/bundle/ultisnips"]
 	path = .vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips
+    url = https://github.com/vim-scripts/UltiSnips.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -38,7 +38,7 @@
 	path = .vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "/Users/johan/.vim/bundle/syntastic"]
-	path = /Users/johan/.vim/bundle/syntastic
+	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/vim-arduino"]
 	path = .vim/bundle/vim-arduino
