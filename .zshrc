@@ -19,13 +19,13 @@ export PATH=/usr/local/share/npm/bin:${PATH}
 export EC2_HOME="$HOME/ec2-api-tools"
 export PATH="$EC2_HOME/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-eval "$(fasd --init auto)"
+#eval "$(fasd --init auto)"
 
 # Colorize terminal
-eval `gdircolors $HOME/.dir_colors`
+eval `dircolors $HOME/.dir_colors`
 export TERM='xterm-256color'
-alias ls='gls --color=auto'
-alias ll='gls -l --color=auto'
+alias ls='ls --color=auto'
+alias ll='ls -l --color=auto'
 #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
@@ -77,9 +77,7 @@ bindkey -a '^P' history-beginning-search-backward # binding for Vi-mode
 bindkey -a '^N' history-beginning-search-forward
 
 # Use vim as the editor
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
-export EDITOR=vi
+export EDITOR=vim
 set -o vi
 
 # Use jj and jk to exit insert mode.
@@ -141,6 +139,7 @@ function up()
 }
 
 # Initialize RVM
-PATH=$PATH:$HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#PATH=$PATH:$HOME/.rvm/bin
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 
