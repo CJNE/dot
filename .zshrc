@@ -8,10 +8,14 @@ prompt grb
 autoload -U compinit
 compinit
 
+#Node 
+export NODE_PATH="/usr/local/lib/node"
+
 #Java
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH=/usr/local/share/npm/bin:${PATH}
 export EC2_HOME="$HOME/ec2-api-tools"
 export PATH="$EC2_HOME/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
@@ -27,9 +31,9 @@ export GREP_OPTIONS="--color"
 
 
 # I don't need the arrow keys, I use ^N and ^P for this (see below).
-bindkey -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
+#bindkey -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
 # Also not in Vi mode.
-bindkey -a -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
+#bindkey -a -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
 
 # Nicer history
 export HISTSIZE=100000
