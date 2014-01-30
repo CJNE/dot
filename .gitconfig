@@ -46,8 +46,6 @@
 [merge]
     tool = vimdiff
 
-[push]
-	default = simple
 [core]
 	excludesfile = ~/.cvsignore
 	editor = /usr/bin/vim

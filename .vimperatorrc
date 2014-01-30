@@ -1,0 +1,7 @@
+"3.8.1 (created: 2013/11/21 23:49:14)
+
+highlight HintElem background-color: yellow;  color: black; background-color: transparent;
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+source! /Users/johan/.vimperatorrc.local
+
+" vim: set ft=vimperator:
