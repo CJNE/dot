@@ -1,6 +1,7 @@
 "3.8.1 (created: 2013/11/21 23:49:14)
 
-highlight HintElem background-color: yellow;  color: black; background-color: transparent;
+highlight Hint clear; text-transform: uppercase; padding: 0 2px 0 1px; background-color: yellow; font: bold 11px “Droid Sans Mono”;
+highlight HintElem background-color: yellow;  color: black; background-color: transparent; background-color: transparent;
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 source! /Users/johan/.vimperatorrc.local
 
