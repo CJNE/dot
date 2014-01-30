@@ -206,10 +206,13 @@ test.rb
 .pip
 .npm
 .Scilab
+<<<<<<< HEAD
 .matlab
 .node-gyp
 .npm
 .slate
+=======
+>>>>>>> b2b098d960a057a453802a28801389cd70bb3906
 .bower
 .bprlzxpn
 .config

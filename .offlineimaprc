@@ -555,7 +555,11 @@ type = Gmail
 
 # Specify the Gmail user name. This is the only mandatory parameter.
 remoteuser = johan@generatorhallen.se
+<<<<<<< HEAD
 cert_fingerprint = 89091347184d41768bfc0da9fad94bfe882dd358
+=======
+cert_fingerprint = b0ba392bba326e6feb1add4d04fa0fb86cd173fa
+>>>>>>> b2b098d960a057a453802a28801389cd70bb3906
 # The trash folder name may be different from [Gmail]/Trash
 # for example on german googlemail, this setting should be
 #
