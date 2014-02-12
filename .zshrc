@@ -24,8 +24,8 @@ export PATH="$HOME/bin:$PATH"
 # Colorize terminal
 eval `dircolors $HOME/.dir_colors`
 export TERM='xterm-256color'
-alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
+alias ls='gls --color=auto'
+alias ll='gls -l --color=auto'
 #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 

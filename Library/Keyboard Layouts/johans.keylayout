@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE keyboard PUBLIC "" "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--Created by Ukelele version 2.2.4 on 2013-01-17 at 10:48 (CET)-->
-<!--Last edited by Ukelele version 2.2.4 on 2013-01-17 at 11:36 (CET)-->
+<!--Last edited by Ukelele version 2.2.7 on 2014-02-03 at 19:34 (CET)-->
 <keyboard group="0" id="5591" name="U.S.Johan" maxout="1">
     <layouts>
         <layout first="0" last="17" modifiers="f4" mapSet="16c"/>
@@ -404,7 +404,7 @@
             <key code="21" output="¢"/>
             <key code="22" output="§"/>
             <key code="23" output="∞"/>
-            <key code="24" output="≠"/>
+            <key code="24" output="å"/>
             <key code="25" output="ª"/>
             <key code="26" output="¶"/>
             <key code="27" output="–"/>
@@ -516,7 +516,7 @@
             <key code="21" output="›"/>
             <key code="22" output="ﬂ"/>
             <key code="23" output="ﬁ"/>
-            <key code="24" output="±"/>
+            <key code="24" output="Å"/>
             <key code="25" output="·"/>
             <key code="26" output="‡"/>
             <key code="27" output="—"/>
