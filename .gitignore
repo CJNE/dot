@@ -206,6 +206,10 @@ test.rb
 .pip
 .npm
 .Scilab
+.matlab
+.node-gyp
+.npm
+.slate
 .bower
 .bprlzxpn
 .config
