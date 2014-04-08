@@ -221,3 +221,5 @@ test.rb
 .sup
 .orpxomcrc
 .npmrc
+.atom
+.dbshell
