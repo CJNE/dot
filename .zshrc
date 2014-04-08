@@ -28,6 +28,7 @@ alias ls='gls --color=auto'
 alias ll='gls -l --color=auto'
 #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
+alias vim='/usr/local/bin/vim'
 
 
 # I don't need the arrow keys, I use ^N and ^P for this (see below).
