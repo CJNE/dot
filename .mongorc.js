@@ -1,0 +1,1 @@
+/Users/johan/tools/mongo-hacker/mongo_hacker.js
