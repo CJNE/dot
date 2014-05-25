@@ -1,1 +1,1 @@
-/Users/johan/tools/mongo-hacker/mongo_hacker.js
+/usr/local/lib/node_modules/mongo-hacker/mongo_hacker.js

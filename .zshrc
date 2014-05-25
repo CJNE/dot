@@ -19,6 +19,7 @@ export PATH=/usr/local/share/npm/bin:${PATH}
 export EC2_HOME="$HOME/ec2-api-tools"
 export PATH="$EC2_HOME/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 #eval "$(fasd --init auto)"
 
 # Colorize terminal
