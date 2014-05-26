@@ -12,7 +12,7 @@ compinit
 export NODE_PATH="/usr/local/lib/node"
 
 #Java
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home
 # Add paths
 export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 export PATH=/usr/local/share/npm/bin:${PATH}
