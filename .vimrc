@@ -1,7 +1,8 @@
 " This is Gary Bernhardt's .vimrc file
 " vim:set ts=2 sts=2 sw=2 expandtab:
 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+execute pathogen#infect('bundle/{}')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -107,6 +108,7 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 :set t_Co=256 " 256 colors
 :set background=dark
 :color solarized
+":color dracula
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline
