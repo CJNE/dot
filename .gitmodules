@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/vim-arduino"]
 	path = .vim/bundle/vim-arduino
 	url = https://github.com/tclem/vim-arduino.git
+[submodule "/Users/johan/.oh-my-zsh"]
+	path = /Users/johan/.oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git

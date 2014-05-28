@@ -1,147 +1,77 @@
-# Set custom prompt
-setopt PROMPT_SUBST
-autoload -U promptinit
-promptinit
-prompt grb
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-# Initialize completion
-autoload -U compinit
-compinit
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="pygmalion"
+#ZSH_THEME="robbyrussell"
 
-#Node 
-export NODE_PATH="/usr/local/lib/node"
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#Java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home
-# Add paths
-export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
-export PATH=/usr/local/share/npm/bin:${PATH}
-export EC2_HOME="$HOME/ec2-api-tools"
-export PATH="$EC2_HOME/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
-#eval "$(fasd --init auto)"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Colorize terminal
-#eval `dircolors $HOME/.dir_colors`
-export TERM='xterm-256color'
-alias ls='gls --color=auto'
-alias ll='gls -l --color=auto'
-#export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-export GREP_OPTIONS="--color"
-alias vim='/usr/local/bin/vim'
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-# I don't need the arrow keys, I use ^N and ^P for this (see below).
-#bindkey -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
-# Also not in Vi mode.
-#bindkey -a -r '^[OA' '^[OB' '^[OC' '^[OD' '^[[A' '^[[B' '^[[C' '^[[D'
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-# Nicer history
-export HISTSIZE=100000
-export HISTFILE="$HOME/.history"
-export SAVEHIST=$HISTSIZE
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Append to the history file instead of overwriting it and do it immediately
-# when a command is executed.
-setopt appendhistory
-setopt incappendhistory
-# If the same command is run multiple times store it only once in the history.
-setopt histignoredups
-# Don't add lines starting with a space to the history.
-setopt histignorespace
-# Vim like completions of previous executed commands (also enter Vi-mode). If
-# called at the beginning it just recalls old commands (like cursor up), if
-# called after typing something, only lines starting with the typed text are
-# returned. Very useful to get old commands quickly - in addition to the
-# history commands (!..). Thanks to Mikachu in #zsh on Freenode (2010-01-17
-# 12:47 CET) for the information how to a use function with bindkey.
-zle -N my-vi-history-beginning-search-backward
-my-vi-history-beginning-search-backward() {
-    local not_at_beginning_of_line
-    if [[ $CURSOR -ne 0 ]]; then
-        not_at_beginning_of_line=yes
-    fi
+# Uncomment the following line to disable command auto-correction.
+# DISABLE_CORRECTION="true"
 
-    zle history-beginning-search-backward
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-    # Start Vi-mode and stay at the same position (Vi-mode moves one left,
-    # this counters it).
-    zle vi-cmd-mode
-    if [[ -n $not_at_beginning_of_line ]]; then
-        zle vi-forward-char
-    fi
-}
-bindkey '^P' my-vi-history-beginning-search-backward
-bindkey -a '^P' history-beginning-search-backward # binding for Vi-mode
-# Here only Vi-mode is necessary as ^P enters Vi-mode and ^N only makes sense
-# after calling ^P.
-bindkey -a '^N' history-beginning-search-forward
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Use vim as the editor
-export EDITOR=vim
-set -o vi
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
-# Use jj and jk to exit insert mode.
-bindkey 'jj' vi-cmd-mode
-bindkey 'jk' vi-cmd-mode
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Use C-x C-e to edit the current command line
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '\C-x\C-e' edit-command-line
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMOX_FIXTERM="false"
+plugins=(git aws osx brew vi-mode web-search wd node npm sudo tmux)
 
-# By default, zsh considers many characters part of a word (e.g., _ and -).
-# Narrow that down to allow easier skipping through words via M-f and M-b.
-export WORDCHARS='*?[]~&;!$%^<>'
+source $ZSH/oh-my-zsh.sh
 
-# Highlight search results in ack.
-export ACK_COLOR_MATCH='red'
+# User configuration
 
-# Aliases
-alias r=rails
-#alias t="script/test $*"
-#alias f="script/features $*"
-alias weechat="TERM=screen-256color weechat-curses"
-function mcd() { mkdir -p $1 && cd $1 }
-function cdf() { cd *$1*/ } # stolen from @topfunky
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# Activate the closest virtualenv by looking in parent directories.
-activate_virtualenv() {
-    if [ -f env/bin/activate ]; then . env/bin/activate;
-    elif [ -f ../env/bin/activate ]; then . ../env/bin/activate;
-    elif [ -f ../../env/bin/activate ]; then . ../../env/bin/activate;
-    elif [ -f ../../../env/bin/activate ]; then . ../../../env/bin/activate;
-    fi
-}
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-# By @ieure; copied from https://gist.github.com/1474072
-#
-# It finds a file, looking up through parent directories until it finds one.
-# Use it like this:
-#
-#   $ ls .tmux.conf
-#   ls: .tmux.conf: No such file or directory
-#
-#   $ ls `up .tmux.conf`
-#   /Users/grb/.tmux.conf
-#
-#   $ cat `up .tmux.conf`
-#   set -g default-terminal "screen-256color"
-#
-function up()
-{
-    local DIR=$PWD
-    local TARGET=$1
-    while [ ! -e $DIR/$TARGET -a $DIR != "/" ]; do
-        DIR=$(dirname $DIR)
-    done
-    test $DIR != "/" && echo $DIR/$TARGET
-}
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# Initialize RVM
-#PATH=$PATH:$HOME/.rvm/bin
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
