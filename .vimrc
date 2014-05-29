@@ -107,7 +107,9 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256 " 256 colors
 :set background=dark
-:color solarized
+":let base16colorspace=256
+:color base16-default
+":color solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
