@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh installation.
+# Path to your ohmy-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -49,7 +49,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOSTART="false"
+ZSH_TMUX_AUTOSTART_ONCE="true"
 ZSH_TMOX_FIXTERM="false"
 plugins=(git aws osx brew vi-mode web-search wd node npm sudo tmux)
 
