@@ -46,15 +46,15 @@
 [submodule ".vim/bundle/vim-arduino"]
 	path = .vim/bundle/vim-arduino
 	url = https://github.com/tclem/vim-arduino.git
-[submodule "/Users/johan/.oh-my-zsh"]
-	path = /Users/johan/.oh-my-zsh
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "/Users/johan/.vim/bundle/vim-airline"]
-	path = /Users/johan/.vim/bundle/vim-airline
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
-[submodule "/Users/johan/.vim/bundle/vim-bufferline"]
-	path = /Users/johan/.vim/bundle/vim-bufferline
+[submodule ".vim/bundle/vim-bufferline"]
+	path = .vim/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline
-[submodule "/Users/johan/.vim/bundle/tmuxline.vim"]
-	path = /Users/johan/.vim/bundle/tmuxline.vim
+[submodule ".vim/bundle/tmuxline.vim"]
+	path = .vim/bundle/tmuxline.vim
 	url = https://github.com/edkolev/tmuxline.vim
