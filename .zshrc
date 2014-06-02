@@ -78,3 +78,31 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+# Vim like completions of previous executed commands (also enter Vi-mode). If
+# called at the beginning it just recalls old commands (like cursor up), if
+# called after typing something, only lines starting with the typed text are
+# returned. Very useful to get old commands quickly - in addition to the
+# historW commands (!..). Thanks to Mikachu in #zsh on Freenode (2010-01-17
+# 12:47 CET) for the information how to a use function with bindkey.
+zle -N my-vi-history-beginning-search-backward
+my-vi-history-beginning-search-backward() {
+    local not_at_beginning_of_line
+    if [[ $CURSOR -ne 0 ]]; then
+        not_at_beginning_of_line=yes
+    fi
+
+    zle history-beginning-search-backward
+
+    # Start Vi-mode and stay at the same position (Vi-mode moves one left,
+    # this counters it).
+    zle vi-cmd-mode
+    if [[ -n $not_at_beginning_of_line ]]; then
+        zle vi-forward-char
+    fi
+}
+bindkey '^P' my-vi-history-beginning-search-backward
+bindkey -a '^P' history-beginning-search-backward # binding for Vi-mode
+# Here only Vi-mode is necessary as ^P enters Vi-mode and ^N only makes sense
+# after calling ^P.
+bindkey -a '^N' history-beginning-search-forward
+export WORDCHARS='*?[]~&;!$%^<>'
