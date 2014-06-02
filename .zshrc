@@ -58,6 +58,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -76,3 +77,4 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+VAGRANT_DEFAULT_PROVIDER=vmware_fusion
