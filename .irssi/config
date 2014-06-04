@@ -10,11 +10,16 @@ servers = (
   }
 );
 
-chatnets = { freenode = { type = "IRC"; nick = "CJNE"; }; };
+chatnets = {
+  freenode = {
+    type = "IRC";
+    nick = "CJNE";
+    autosendcmd = "/msg nickserv identify johans;wait 2000";
+  };
+};
 
-channels = (
-  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#rubyonrails"; chatnet = "freenode"; autojoin = "yes"; }
+channels = ( 
+  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {

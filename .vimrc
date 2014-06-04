@@ -106,9 +106,11 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256 " 256 colors
-:set background=light
+:set background=dark
+":set background=light
 ":let base16colorspace=256
-:color base16-mocha
+:color base16-solarized
+":color base16-mocha
 ":color solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
