@@ -7,7 +7,11 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="pygmalion"
 #ZSH_THEME="robbyrussell"
-
+#avit
+#dogenpunk
+#flazz
+#smt
+#sorin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -108,3 +112,4 @@ bindkey -a '^P' history-beginning-search-backward # binding for Vi-mode
 bindkey -a '^N' history-beginning-search-forward
 export WORDCHARS='*?[]~&;!$%^<>'
 export EDITOR=vim
+setopt extendedglob
