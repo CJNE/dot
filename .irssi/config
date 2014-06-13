@@ -18,8 +18,10 @@ chatnets = {
   };
 };
 
-channels = ( 
-  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; }
+channels = (
+  { name = "#vim"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#chef"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#node.js"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
