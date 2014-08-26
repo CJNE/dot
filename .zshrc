@@ -5,7 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion"
+ZSH_THEME="agnoster"
+#ZSH_THEME="pygmalion"
 #ZSH_THEME="robbyrussell"
 #avit
 #dogenpunk
@@ -35,7 +36,7 @@ CASE_SENSITIVE="true"
 # DISABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -113,3 +114,4 @@ bindkey -a '^N' history-beginning-search-forward
 export WORDCHARS='*?[]~&;!$%^<>'
 export EDITOR=vim
 setopt extendedglob
+unsetopt correctall
