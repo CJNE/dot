@@ -115,3 +115,7 @@ export WORDCHARS='*?[]~&;!$%^<>'
 export EDITOR=vim
 setopt extendedglob
 unsetopt correctall
+function marked {
+    open -a marked.app $1
+}
+
