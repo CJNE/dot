@@ -356,25 +356,25 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>f :CtrlP<cr>
 nmap <leader>F :CtrlP %%<cr>
-"RoR CtrlP stuff
-nmap <leader>fc :CtrlP app/controllers<cr>
-nmap <leader>fa :CtrlP app<cr>
-nmap <leader>fm :CtrlP app/models<cr>
-nmap <leader>fv :CtrlP app/views<cr>
-nmap <leader>fh :CtrlP app/helpers<cr>
-nmap <leader>fp :CtrlP app/public<cr>
-nmap <leader>fs :CtrlP app/assets/stylesheets<cr>
+nmap <leader>b :CtrlPBuffer<cr>
+"let g:ctrlp_map = '<Leader>t'
+"let g:ctrlp_match_window_bottom = 0
+"let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|node_modules|bower_components|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip  
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "let g:ctrlp_user_command = 'find %s -type f'
-let g:ctrlp_user_command = { 
-      \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files'],
-      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-      \ },
-      \ 'fallback': 'find %s -type f'
-      \ }
-
+"let g:ctrlp_user_command = { 
+"      \ 'types': {
+"      \ 1: ['.git', 'cd %s && git ls-files'],
+"      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+"      \ },
+"      \ 'fallback': 'find %s -type f'
+"      \ }
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
