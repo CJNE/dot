@@ -57,7 +57,7 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_TMUX_AUTOSTART="false"
 ZSH_TMUX_AUTOSTART_ONCE="true"
 ZSH_TMOX_FIXTERM="false"
-plugins=(git aws osx brew vi-mode web-search wd node npm sudo tmux)
+plugins=(git osx brew vi-mode web-search wd node npm sudo tmux)
 
 source $ZSH/oh-my-zsh.sh
 
