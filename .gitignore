@@ -228,3 +228,5 @@ tmp
 .forever
 .berkshelf
 packer
+.emacs.d.pre-prelude.tar
+emacs.d
