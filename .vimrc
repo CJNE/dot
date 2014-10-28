@@ -7,6 +7,7 @@ execute pathogen#infect('bundle/{}')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set exrc
 set nocompatible
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
@@ -49,6 +50,7 @@ set showcmd
 " (e.g. in .bashrc or .zshrc)
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+map <C-b> <esc>:w<CR>:Rw<CR>
 " Enable highlighting for syntax
 syntax on
 " Enable file type detection.
@@ -330,7 +332,7 @@ autocmd InsertLeave * :set relativenumber
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsListSnippets='<s-tab>'
-nmap <leader>s :UltiSnipsEdit<cr>
+"nmap <leader>s :UltiSnipsEdit<cr>
 let g:ulti_expand_or_jump_res = 0 "default value, just set once
 function! Ulti_ExpandOrJump_and_getRes()
  call UltiSnips_ExpandSnippetOrJump()
