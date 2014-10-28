@@ -45,6 +45,10 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backspace=indent,eol,start
 " display incomplete commands
 set showcmd
+" Note that remapping C-s requires flow control to be disabled
+" (e.g. in .bashrc or .zshrc)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
 " Enable highlighting for syntax
 syntax on
 " Enable file type detection.

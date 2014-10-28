@@ -119,6 +119,9 @@ function marked {
     open -a marked.app $1
 }
 
+#disable flow control (for C-s to work in vim)
+stty stop undef
+stty start undef
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
