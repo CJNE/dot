@@ -119,3 +119,6 @@ function marked {
     open -a marked.app $1
 }
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
