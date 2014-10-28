@@ -109,9 +109,9 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 :set background=dark
 ":set background=light
 ":let base16colorspace=256
-:color base16-solarized
+":color base16-solarized
 ":color base16-mocha
-":color solarized
+:color solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
@@ -126,6 +126,7 @@ au BufRead,BufNewFile *.ino set filetype=arduino
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
+"  let g:airline#extensions#tabline#enabled = 1
 " let g:airline_left_sep = '»'
 " let g:airline_left_sep = '▶'
 " let g:airline_right_sep = '«'
