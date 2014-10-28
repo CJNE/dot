@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/tmuxline.vim"]
 	path = .vim/bundle/tmuxline.vim
 	url = https://github.com/edkolev/tmuxline.vim
+[submodule ".vim/bundle/mustache"]
+	path = .vim/bundle/mustache
+	url = git://github.com/mustache/vim-mustache-handlebars.git

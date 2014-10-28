@@ -229,3 +229,6 @@ tmp
 .berkshelf
 packer
 .oh-my-zsh
+.emacs.d.pre-prelude.tar
+emacs.d
+.emacs.d
