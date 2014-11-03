@@ -331,13 +331,13 @@ autocmd InsertLeave * :set relativenumber
 " UlitSnip
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-c>"
-let g:UltiSnipsJumpForwardTrigger="<C-tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir="~/.vim/johan/UltiSnips" 
+"let g:UltiSnipsExpandTrigger="<C-c>"
+"let g:UltiSnipsJumpForwardTrigger="<C-tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"let g:UltiSnipsSnippetsDir="~/.vim/johan/UltiSnips" 
 ", "vim-snippets"]
 
 " If you want :UltiSnipsEdit to split your window.
@@ -561,19 +561,19 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-inoremap <silent><expr><CR> pumvisible() ?
-    \ (len(keys(UltiSnips#SnippetsInCurrentScope())) > 0 ?
-    \ neocomplete#close_popup()."\<C-c>l:call UltiSnips#ExpandSnippet()\<CR>" :
-    \ neocomplete#close_popup()) : "\<CR>"
-"function! s:my_cr_function()
-"  "return neocomplete#close_popup() . "\<CR>"
-"  " For no inserting <CR> key.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"inoremap <silent><expr><CR> pumvisible() ?
+"    \ (len(keys(UltiSnips#SnippetsInCurrentScope())) > 0 ?
+"    \ neocomplete#close_popup()."\<tab>l:call UltiSnips#ExpandSnippet()\<CR>" :
+"    \ neocomplete#close_popup()) : "\<CR>"
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
 "  return pumvisible() ? 
 "        \ (len(keys(UltiSnips#SnippetsInCurrentScope())) > 0 ? 
 "        \ neocomplete#close_popup()."\<C-c>l:call UltiSnips#ExpandSnippet()\<CR>" :
 "        \ neocomplete#close_popup()) : "\<CR>"
-"endfunction
+endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.

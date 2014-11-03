@@ -68,5 +68,5 @@
 	path = .vim/bundle/neocomplete
 	url = git@github.com:Shougo/neocomplete.vim.git
 [submodule ".vim/vim-snippets"]
-	path = .vim/vim-snippets
+	path = .vim/bundle/vim-snippets
 	url = git@github.com:honza/vim-snippets.git
