@@ -125,3 +125,7 @@ stty start undef
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=/opt/chefdk/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/heroku/bin:/Users/johan/bin:/usr/local/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/CrossPack-AVR/bin:/usr/local/heroku/bin:/Users/johan/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin
+export GEM_ROOT="/opt/chefdk/embedded/lib/ruby/gems/2.1.0"
+export GEM_HOME=/Users/johan/.chefdk/gem/ruby/2.1.0
+export GEM_PATH=/Users/johan/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0
