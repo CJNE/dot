@@ -234,3 +234,4 @@ emacs.d
 .emacs.d
 .packer.d
 bin/AWS-ElasticBeanstalk-CLI-2.6.4
+.boot2docker
