@@ -3,14 +3,14 @@ require 'rubygems'
 require 'ubuntu_ami'
 
 #family = "trusty"
-family = "precise"
+family = ARGV[2] || "precise"
 ami = Ubuntu.release(family).amis.find do |find_ami|
   find_ami.arch == "amd64" and
   find_ami.root_store == "ebs" and
   find_ami.virtualization_type == "paravirtual" and
   find_ami.region == "us-east-1"
 end
-puts "Using ami #{ami.name}"
+puts "Using ami #{ami.name} #{family}"
 puts "Saved as #{ARGV[0]}"
 `berks install`
 `mkdir dist`

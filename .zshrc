@@ -66,6 +66,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
 export PATH=$HOME/packer:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export VAGRANT_HOME="/Volumes/LaCie/vagrant_home"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

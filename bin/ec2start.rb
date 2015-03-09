@@ -71,43 +71,42 @@ CHEF_SERVER_URL="https://api.opscode.com/organizations/ibibi"
 NODE_NAME="#{@instance_name}-`curl -s http://169.254.169.254/1.0/meta-data/instance-id/`"
 BOOTLOG="/var/log/bootstrap.log"
 RUNLIST='recipe[tsr-base::default],#{options[:runlist]},recipe[tsr-base::chef-client]'
-INIT_RUNLIT='"recipe[tsr-base::chef-client]"'
+INIT_RUNLIST='"recipe[tsr-base::chef-client]"'
 CHEF_ENVIRONMENT="#{options[:env]}"
 
 test $UID == 0 || (echo "Error: must run as root"; exit 1)
 #mkdir /etc/chef
+mkdir -p /etc/chef/ohai/hints
+touch /etc/chef/ohai/hints/iam.json
+mkdir /var/log/chef
+
 ######### STEP 3: CONFIGURE CHEF CLIENT
-echo "Writing first boot runlist..." >>$BOOTLOG
-cat > /etc/chef/first-boot.json <<EOF
-{
-  "chef_client": {
-    "config": {
-      "server_url": "$CHEF_SERVER_URL",
-      "node_name": "$NODE_NAME",
-      "environment": "$CHEF_ENVIRONMENT"
-    }
-  },
-  "run_list": [ $INIT_RUNLIST ]
-}
-EOF
-
-
 # Write chef-client config
 echo "Writing client configuration..." >>$BOOTLOG
 rm -f /etc/chef/client.rb
 cat >> /etc/chef/client.rb <<EOF
 Encoding.default_external = Encoding::UTF_8
+client_fork true
+ssl_verify_mode :verify_peer
+verify_api_cert true
 log_level        :info
 log_location     "/var/log/chef/client.log"
-chef_server_url "$CHEF_SERVER_URL"
 validation_client_name "ibibi-validator"
 encrypted_data_bag_secret "/etc/chef/encrypted_data_bag_secret"
+
+Ohai::Config[:plugin_path] << "/etc/chef/ohai_plugins"
+  
+Dir.glob(File.join("/etc/chef", "client.d", "*.rb")).each do |conf|
+  Chef::Config.from_file(conf)
+end
+
+chef_server_url "$CHEF_SERVER_URL"
 node_name              '$NODE_NAME'
 environment             '$CHEF_ENVIRONMENT'
 EOF
 
 echo "Running chef-client first time..." >>$BOOTLOG
-LC_ALL=en_US.utf8 chef-client --once -S $CHEF_SERVER_URL -K /etc/chef/ibibi-validator.pem -j /etc/chef/first-boot.json -r "$RUNLIST" 2>&1 >>$BOOTLOG
+LC_ALL=en_US.utf8 chef-client --once -S $CHEF_SERVER_URL -K /etc/chef/ibibi-validator.pem -r "$RUNLIST" >> $BOOTLOG 2>&1
 
 echo "All done " >>$BOOTLOG
 eos
@@ -154,7 +153,7 @@ def run_instance(options, bootscript)
   puts "Instance id: #{instance_id} starting, waiting for public IP"
   public_ip = nil
   while !public_ip do
-    sleep 2
+    sleep 5
     info = ec2.describe_instances(instance_ids: [ instance_id ])
     public_ip = info.reservations[0].instances[0].public_dns_name
   end
