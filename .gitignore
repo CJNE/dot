@@ -232,6 +232,10 @@ packer
 .emacs.d.pre-prelude.tar
 emacs.d
 .emacs.d
+.3T
+.docker
+.ionic
+.swt
 .packer.d
 bin/AWS-ElasticBeanstalk-CLI-2.6.4
 .boot2docker
