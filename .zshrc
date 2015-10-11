@@ -57,13 +57,13 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_TMUX_AUTOSTART="false"
 ZSH_TMUX_AUTOSTART_ONCE="true"
 ZSH_TMOX_FIXTERM="false"
-plugins=(git osx brew vi-mode web-search wd node npm sudo tmux)
+plugins=(git osx brew vi-mode web-search wd node npm sudo tmux fancy-ctrl-z)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
+#export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
 export PATH=$HOME/packer:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
