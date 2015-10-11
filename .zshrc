@@ -63,7 +63,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
+#export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
 export PATH=$HOME/packer:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export VAGRANT_HOME="/Volumes/LaCie/vagrant_home"
@@ -84,6 +84,10 @@ export VAGRANT_HOME="/Volumes/LaCie/vagrant_home"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+#
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
 VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 # Vim like completions of previous executed commands (also enter Vi-mode). If
 # called at the beginning it just recalls old commands (like cursor up), if
@@ -126,7 +130,9 @@ stty start undef
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH=/opt/chefdk/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/heroku/bin:/Users/johan/bin:/usr/local/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/CrossPack-AVR/bin:/usr/local/heroku/bin:/Users/johan/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin
+#export PATH=/opt/chefdk/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/heroku/bin:/Users/johan/bin:/usr/local/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/CrossPack-AVR/bin:/usr/local/heroku/bin:/Users/johan/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin
+export PATH=/usr/local/heroku/bin:/Users/johan/bin:/usr/local/bin:/Users/johan/packer:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/CrossPack-AVR/bin:/usr/local/heroku/bin:/Users/johan/bin:/Users/johan/packer
+export PATH="/opt/chefdk/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:$PATH"
 export GEM_ROOT="/opt/chefdk/embedded/lib/ruby/gems/2.1.0"
 export GEM_HOME=/Users/johan/.chefdk/gem/ruby/2.1.0
 export GEM_PATH=/Users/johan/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0

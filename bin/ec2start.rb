@@ -5,8 +5,6 @@ require 'pp'
 require 'shellwords'
 require 'base64'
 require 'aws-sdk-core'
-Aws.config[:credentials] = Aws::SharedCredentials.new(profile_name:'default')
-Aws.config[:region] = 'us-east-1'
 def prompt(*args)
     print(*args)
     gets
@@ -17,12 +15,14 @@ options = {
   :ami => nil,
   :env => 'tsr-prod',
   :placement => 'us-east-1e',
-  :security_group => 'default',
+  :prefix => 'tsr',
   :ssh_key => 'fileserver',
   :iam_role => 'provision',
   :action => 'start',
   :name => nil,
-  :verbose => false
+  :verbose => false,
+  :profile => 'default',
+  :region => 'us-east-1'
 
 }
 OptionParser.new do |opts|
@@ -49,6 +49,21 @@ OptionParser.new do |opts|
   opts.on("-r", "--run-list RUNLIST", "Example: -r 'recipe[cookbook:recipe], role[rolename]'") do |runlist|
     options[:runlist] = runlist
   end
+  opts.on("-p", "--profile AWS_PROFILE") do |profile|
+    options[:profile] = profile
+  end
+  opts.on("--subnet SUBNET") do |subnet|
+    options[:subnet] = subnet
+  end
+  opts.on("-k", "--keypair SSH_PEM") do |keypair|
+    options[:ssh_key] = keypair
+  end
+  opts.on("-z", "--region REGION") do |region|
+    options[:region] = region
+  end
+  opts.on("-c", "--prefix PREFIX") do |prefix|
+    options[:prefix] = prefix
+  end
   opts.on("-n", "--name NAME") do |name|
     options[:name] = name
   end
@@ -62,6 +77,9 @@ abort("A name is required for creating a launch configuration") unless options[:
 
 @instance_name = options[:name] || "noname"
 
+Aws.config[:credentials] = Aws::SharedCredentials.new(profile_name:options[:profile])
+Aws.config[:region] = options[:region]
+
 def create_bootscript(options)
   puts "Creating bootscript" if options[:verbose]
   bootscript = <<eos
@@ -70,8 +88,8 @@ def create_bootscript(options)
 CHEF_SERVER_URL="https://api.opscode.com/organizations/ibibi"
 NODE_NAME="#{@instance_name}-`curl -s http://169.254.169.254/1.0/meta-data/instance-id/`"
 BOOTLOG="/var/log/bootstrap.log"
-RUNLIST='recipe[tsr-base::default],#{options[:runlist]},recipe[tsr-base::chef-client]'
-INIT_RUNLIST='"recipe[tsr-base::chef-client]"'
+RUNLIST='recipe[#{options[:prefix]}-base::default],#{options[:runlist]},recipe[#{options[:prefix]}-base::chef-client]'
+INIT_RUNLIST='"recipe[#{options[:prefix]}-base::chef-client]"'
 CHEF_ENVIRONMENT="#{options[:env]}"
 
 test $UID == 0 || (echo "Error: must run as root"; exit 1)
@@ -125,17 +143,18 @@ puts "Launch command: " if options[:verbose]
 def run_instance(options, bootscript)
   puts launch_command if options[:verbose]
   puts "I'm about to launch a #{options[:instance_type]} instance using ami id #{options[:ami]} in environment #{options[:env]} with the following run list: #{options[:runlist]}"
-  puts "Security group: #{options[:security_group]}, ssh key: #{options[:ssh_key]}, iam role: #{options[:iam_role]}"
+  puts "Security group: #{options[:security_group] || 'none'}, ssh key: #{options[:ssh_key]}, iam role: #{options[:iam_role]}"
+  puts "AWS Profile: #{options[:profile]}, region: #{options[:region]}, subnet: #{options[:subnet]}"
   continue = prompt "Go ahead? (Y/N): "
   abort "Aborted" unless continue.strip =~ /y/i 
-  ec2 = Aws.ec2
-  resp = ec2.run_instances(
+  #ec2 = Aws.ec2
+  ec2 = Aws::EC2::Client.new(region: options[:region])
+  launchOpts = {
     dry_run: false,
     image_id: options[:ami],
     min_count: 1,
     max_count: 1,
     key_name: options[:ssh_key],
-    security_groups: options[:security_group].split(","),
     instance_type: options[:instance_type],
     placement: {
       availability_zone: options[:placement]
@@ -147,7 +166,14 @@ def run_instance(options, bootscript)
       name: options[:iam_role]
     },
     user_data: Base64.encode64(bootscript)
-  )
+  }
+  if(options[:subnet]) 
+    launchOpts['subnet_id'] = options[:subnet] if options[:subnet]
+    launchOpts['security_group_ids'] = options[:security_group].split(",")
+  else 
+    launchOpts['security_group_ids'] = options[:security_group].split(",")
+  end
+  resp = ec2.run_instances(launchOpts)
   #puts `#{launch_command}`
   instance_id = resp.instances[0].instance_id
   puts "Instance id: #{instance_id} starting, waiting for public IP"
@@ -169,10 +195,11 @@ end
 def create_launch_configuration(options, bootscript)
   puts launch_command if options[:verbose]
   puts "I'm about to create a launch configuration with instance type #{options[:instance_type]} instance using ami id #{options[:ami]} in environment #{options[:env]} with the following run list: #{options[:runlist]}"
-  puts "Security group: #{options[:security_group]}, ssh key: #{options[:ssh_key]}"
+  puts "Security group: #{options[:security_group] || 'none'}, ssh key: #{options[:ssh_key]}"
+  puts "AWS Profile: #{options[:profile]}, region: #{options[:region]}"
   continue = prompt "Go ahead? (Y/N): "
   abort "Aborted" unless continue.strip =~ /y/i 
-  autoscaling = Aws.autoscaling
+  autoscaling = Aws::AutoScaling::Client.new(region: options[:region])
   resp = autoscaling.create_launch_configuration(
     launch_configuration_name: options[:name],
     image_id: options[:ami],
@@ -183,12 +210,10 @@ def create_launch_configuration(options, bootscript)
       enabled: true,
     },
     iam_instance_profile: options[:iam_role],
-    security_groups: options[:security_group].split(",")
+    security_groups: options[:security_group] ? options[:security_group].split(",") : []
   )
   pp resp
 end
 
 run_instance(options, bootscript) if options[:action] == "start"
 create_launch_configuration(options, bootscript) if options[:action] == "launchconfig"
-
-
