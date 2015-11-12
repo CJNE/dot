@@ -136,3 +136,5 @@ export PATH="/opt/chefdk/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk
 export GEM_ROOT="/opt/chefdk/embedded/lib/ruby/gems/2.1.0"
 export GEM_HOME=/Users/johan/.chefdk/gem/ruby/2.1.0
 export GEM_PATH=/Users/johan/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
