@@ -251,6 +251,9 @@ let g:ctrlp_switch_buffer = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip  
 let g:ctrlp_match_window = 'bottom,order:ttb'  
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_use_caching = 0
+let grepprg='ag --nogroup --nocolor'
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "let g:ctrlp_user_command = 'find %s -type f'
 "let g:ctrlp_user_command = { 

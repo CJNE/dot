@@ -254,3 +254,7 @@ Autodesk
 Fusion 360 CAM
 .pm2
 .local
+.nvm
+.node_repl_history
+.v8flags.4.5.103.35.johan.json
+.oracle_jre_usage
