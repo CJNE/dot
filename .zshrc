@@ -128,6 +128,9 @@ function marked {
 stty stop undef
 stty start undef
 
+[[ -f "~/.$TERM.ti" ]] && tic ~/.$TERM.ti
+alias vim='nvim'
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 #export PATH=/opt/chefdk/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/heroku/bin:/Users/johan/bin:/usr/local/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/CrossPack-AVR/bin:/usr/local/heroku/bin:/Users/johan/bin:/Users/johan/packer:/opt/chefdk/embedded/bin:/Users/johan/.chefdk/gem/ruby/2.1.0/bin

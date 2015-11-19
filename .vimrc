@@ -476,4 +476,10 @@ endfunction
 
 au BufEnter * call UpdateJsHintConf()
 " }}}
+" Nvim {{{
+if has('nvim')
+  tnoremap <C-o> <C-\><C-n> 
+  nmap <BS> <C-W>h
+endif
+" }}}
 " vim:foldmethod=marker:foldlevel=0:set ts=2 sts=2 sw=2 expandtab:
