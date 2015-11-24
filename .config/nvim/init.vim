@@ -393,7 +393,7 @@ nnoremap Y y$
 nnoremap Q @q
 
 " Cancel terminal mode with ,escape
-tnoremap ,<ESC> <C-\><C-n>
+tnoremap <C-o> <C-\><C-n>
 
 " Omni-complete based on ctags
 inoremap <C-]> <C-x><C-]>
