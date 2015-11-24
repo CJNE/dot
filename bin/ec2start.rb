@@ -67,6 +67,9 @@ OptionParser.new do |opts|
   opts.on("-n", "--name NAME") do |name|
     options[:name] = name
   end
+  opts.on("-b", "--bootscript BOOTSCRIPT") do |bootscript|
+    options[:bootscript] = bootscript
+  end
   opts.on("-v", "--verbose") do 
     options[:verbose] = true
   end
@@ -81,7 +84,7 @@ Aws.config[:credentials] = Aws::SharedCredentials.new(profile_name:options[:prof
 Aws.config[:region] = options[:region]
 
 def create_bootscript(options)
-  puts "Creating bootscript" if options[:verbose]
+  puts "Creating chef bootscript" if options[:verbose]
   bootscript = <<eos
 #!/bin/bash
 # User data to configure a golden image instance.
@@ -131,8 +134,18 @@ eos
   return bootscript
 end
 
-bootscript = create_bootscript options
-puts bootscript if options[:verbose]
+def read_bootscript(options)
+  return if options[:bootscript] == "none"
+  puts "Reading bootscript from file" if options[:verbose]
+  file = File.open(options[:bootscript], "rb")
+  contents = file.read
+  return contents
+end
+
+@bootscript = create_bootscript options if options[:bootscript] == nil
+@bootscript = read_bootscript options if options[:bootscript]
+
+puts @bootscript if options[:verbose]
 
 puts "Launch command: " if options[:verbose]
 #launch_command =<<eos
@@ -199,6 +212,9 @@ def create_launch_configuration(options, bootscript)
   puts "AWS Profile: #{options[:profile]}, region: #{options[:region]}"
   continue = prompt "Go ahead? (Y/N): "
   abort "Aborted" unless continue.strip =~ /y/i 
+  if bootscript == nil
+    bootscript = ""
+  end
   autoscaling = Aws::AutoScaling::Client.new(region: options[:region])
   resp = autoscaling.create_launch_configuration(
     launch_configuration_name: options[:name],
@@ -215,5 +231,5 @@ def create_launch_configuration(options, bootscript)
   pp resp
 end
 
-run_instance(options, bootscript) if options[:action] == "start"
-create_launch_configuration(options, bootscript) if options[:action] == "launchconfig"
+run_instance(options, @bootscript) if options[:action] == "start"
+create_launch_configuration(options, @bootscript) if options[:action] == "launchconfig"
