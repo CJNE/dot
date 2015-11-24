@@ -16,7 +16,6 @@ call plug#begin('~/.config/nvim/plugged')
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " 1.1 Plugin list
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 " ---------------------------------------------------------------------------------------------------------------------
 " Language agnostic plugins
 " ---------------------------------------------------------------------------------------------------------------------
@@ -200,6 +199,8 @@ Plug 'edsono/vim-matchit'
 Plug 'tpope/vim-repeat'
 " Delete all but current buffer
 Plug 'vim-scripts/BufOnly.vim'
+" Utils
+Plug '~/.config/nvim/localplug'
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " 1.2 End of plugin declaration
@@ -855,7 +856,7 @@ syntax on
 "else
 "  colorscheme iceberg
 "endif
-set background=dark " use the dark variant 
+set background=dark " use the dark variant
 colorscheme gruvbox
 
 " Highlight VCS conflict markers
@@ -921,4 +922,6 @@ autocmd BufWritePost *.vim Neomake vint
 " ---------------------------------------------------
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap ,, <c-^>
+set exrc " load .vimrc files
+set modelines=1 " look for modelines in files
 
