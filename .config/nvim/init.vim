@@ -309,7 +309,7 @@ set wildignore+=*.png,*.jpg,*.gif
 " 2.11 Neovim specific settings
 " ---------------------------------------------------------------------------------------------------------------------
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1       " Set an environment variable to use the t_SI/t_EI hack
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1       " Turn on true colors support (does not work inside tmux yet)
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1       " Turn on true colors support (does not work inside tmux yet)
 
 " -----------------------------------------------------
 " 2.12 Ctags settings
@@ -673,7 +673,7 @@ let g:jsx_ext_required=0
 " 4.7 Lightline settings
 " -----------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'gruvbox',
       \ 'tab': {
       \   'active': [ 'tabnum', 'filename', 'modified' ],
       \   'inactive': [ 'tabnum', 'filename', 'modified' ]
