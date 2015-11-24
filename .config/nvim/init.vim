@@ -776,12 +776,14 @@ endfunction
 
 " Search files recursively ([o]pen file)
 nnoremap <silent> <leader>o :call utils#uniteFileRec()<CR>
+nnoremap <silent> <C-p> :call utils#uniteFileRec()<CR>
 " Browse [f]iles in CWD
 nnoremap <silent> <leader>f :call utils#uniteFileBrowse()<CR>
 " [U]nite sources
 nnoremap <silent> <leader>u :call utils#uniteSources()<CR>
 " Search between open files - [b]uffers
 nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
+nnoremap <silent> ,b :call utils#uniteBuffers()<CR>
 " Search in current file ou[t]line (tags in current file)
 nnoremap <silent> <leader>t :call utils#uniteOutline()<CR>
 " Search for term - [g]rep
