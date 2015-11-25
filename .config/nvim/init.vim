@@ -875,6 +875,26 @@ hi! link BufTabLineCurrent Statement
 hi! link BufTabLineActive Comment
 hi! link BufTabLineHidden Comment
 hi! link BufTabLineFill Comment
+
+let g:terminal_color_0 = "#7c6f64"
+
+let g:terminal_color_1 = "#333333"
+let g:terminal_color_2 = "#fb4934"
+let g:terminal_color_3 = "#3c3836"
+let g:terminal_color_4 = "#83a598"
+let g:terminal_color_5 = "#8ec07c"
+let g:terminal_color_6 = "#8ec07c"
+let g:terminal_color_7 = "#7c6f64"
+let g:terminal_color_8 = "#ebdbb2"
+let g:terminal_color_9 = "#d3869b"
+let g:terminal_color_10 = "#b8bb26"
+let g:terminal_color_11 = "#b8bb26"
+let g:terminal_color_12 = "#fb4934"
+let g:terminal_color_13 = "#fabd2f"
+let g:terminal_color_14 = "#b8bb26"
+let g:terminal_color_15 = "#b8bb26"
+let g:terminal_color_background="#282828"
+let g:terminal_color_foreground="#ebdbb2"
 "}}}
 
 " ======================================================================================================================

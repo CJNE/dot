@@ -141,3 +141,4 @@ export GEM_HOME=/Users/johan/.chefdk/gem/ruby/2.1.0
 export GEM_PATH=/Users/johan/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/ruby/gems/2.1.0
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+source ~/.gruvbox_256palette_osx.sh
