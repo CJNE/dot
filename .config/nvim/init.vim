@@ -263,7 +263,12 @@ set nospell                                 " Disable checking by default (use <
 set ignorecase                              " Ignore case by default
 set smartcase                               " Make search case sensitive only if it contains uppercase letters
 set wrapscan                                " Search again from top when reached the bottom
-set nohlsearch                              " Don't highlight after search
+set hlsearch                                " Do highlight after search
+set incsearch
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
 
 " ---------------------------------------------------------------------------------------------------------------------
 " 2.6 Persistent undo settings
@@ -364,13 +369,11 @@ nnoremap gk 5k
 
 " More useful enter and backspace
 "nnoremap <CR> G
-vnoremap <CR> G
 nnoremap <BS> <C-w>h
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-vnoremap <BS> gg
 
 " When jump to next match also center screen
 noremap n nzz
