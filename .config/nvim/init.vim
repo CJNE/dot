@@ -359,7 +359,7 @@ nnoremap Q <nop>
 " -----------------------------------------------------
 
 " Intelligent window cycling
-nmap <silent> <C-w><C-w> :call utils#intelligentCycling()<CR>
+nmap <silent> <C-;> :call utils#intelligentCycling()<CR>
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
 noremap j gj
@@ -374,6 +374,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
+vnoremap <BS> gg
 
 " When jump to next match also center screen
 noremap n nzz
@@ -415,19 +416,19 @@ nnoremap p p`]
 map q: :q
 
 " Use CamelCaseMotion instead of default motions
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
+"map <silent> w <Plug>CamelCaseMotion_w
+"map <silent> b <Plug>CamelCaseMotion_b
+"map <silent> e <Plug>CamelCaseMotion_e
+"map <silent> ge <Plug>CamelCaseMotion_ge
+"sunmap w
+"sunmap b
+"sunmap e
+"sunmap ge
 
 " Fix the cw at the end of line bug
 " default vim has special treatment (:help cw)
-nmap cw ce
-nmap dw de
+"nmap cw ce
+"nmap dw de
 
 " -----------------------------------------------------
 " 3.4 Common tasks
