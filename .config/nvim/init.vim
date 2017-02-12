@@ -23,41 +23,45 @@ call plug#begin('~/.config/nvim/plugged')
 " Asynchronous maker and linter (needs linters to work)
 Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 " Automatically closing stuff
-Plug 'cohama/lexima.vim'
+"Plug 'cohama/lexima.vim'
 " Snippets support
 Plug 'SirVer/ultisnips'
 " Commenting support (gc)
 Plug 'tpope/vim-commentary'
 " Multi-language testing support
-Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestLast', 'TestNearest', 'TestSuite', 'TestVisit'] }
+"Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestLast', 'TestNearest', 'TestSuite', 'TestVisit'] }
 " CamelCase and snake_case motions
-Plug 'bkad/CamelCaseMotion'
+"Plug 'bkad/CamelCaseMotion'
 
 " ---------------------------------------------------------------------------------------------------------------------
 " Ruby/Rails
 " ---------------------------------------------------------------------------------------------------------------------
 
 " Ruby syntax (plays nicely with tpope/rbenv-ctags)
-Plug 'vim-ruby/vim-ruby'
+"Plug 'vim-ruby/vim-ruby'
 " Slim syntax
-Plug 'slim-template/vim-slim'
+"Plug 'slim-template/vim-slim'
 " Haml syntax
-Plug 'tpope/vim-haml'
+"Plug 'tpope/vim-haml'
 " Minitest syntax
-Plug 'sunaku/vim-ruby-minitest'
+"Plug 'sunaku/vim-ruby-minitest'
 " Rails support (:A, :R, :Rmigration, :Rextract)
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby', 'haml', 'slim'] }
+"Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby', 'haml', 'slim'] }
 " Bundler support (play nicely with tpope/gem-ctags)
-Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby', 'haml', 'slim'] }
+"Plug 'tpope/vim-bundler', { 'for': ['ruby', 'eruby', 'haml', 'slim'] }
 " String interpolation helper
-Plug 'p0deje/vim-ruby-interpolation', { 'for': ['ruby'] }
+"Plug 'p0deje/vim-ruby-interpolation', { 'for': ['ruby'] }
 " Refactoring tools
-Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby'] }
+"Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby'] }
 
 " ---------------------------------------------------------------------------------------------------------------------
 " JS (ES6, React)
 " ---------------------------------------------------------------------------------------------------------------------
 
+Plug 'Shougo/deoplete.nvim'
+Plug 'ervandew/supertab'
+Plug 'mhartington/deoplete-typescript'
+Plug 'magarcia/vim-angular2-snippets'
 " JS syntax
 Plug 'othree/yajs.vim'
 " JS libs syntax (React, Angular)
@@ -87,11 +91,11 @@ Plug 'gorodinskiy/vim-coloresque', { 'for': ['css', 'sass', 'scss', 'less'] }
 " ---------------------------------------------------------------------------------------------------------------------
 
 " Elixir syntax
-Plug 'elixir-lang/vim-elixir'
+"Plug 'elixir-lang/vim-elixir'
 " Python syntax
-Plug 'mitsuhiko/vim-python-combined'
+"Plug 'mitsuhiko/vim-python-combined'
 " Elm
-Plug 'lambdatoast/elm.vim'
+"Plug 'lambdatoast/elm.vim'
 " Markdown syntax and helpers
 Plug 'plasticboy/vim-markdown'
 " Tmux syntax
@@ -110,7 +114,7 @@ Plug 'Shougo/unite.vim' | Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Outline source
 Plug 'Shougo/unite-outline'
 " History/yank source
-Plug 'Shougo/neoyank.vim'
+"Plug 'Shougo/neoyank.vim'
 " MRU source
 Plug 'Shougo/neomru.vim'
 " Tag source
@@ -123,13 +127,13 @@ Plug 'ujihisa/unite-colorscheme'
 " ---------------------------------------------------------------------------------------------------------------------
 
 " Nerdtree file browser
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
+"Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
 " Lightline (simple status line)
 Plug 'itchyny/lightline.vim'
 " Buffers tabline
 Plug 'ap/vim-buftabline'
 " Highlight long lines
-Plug 'whatyouhide/vim-lengthmatters'
+"Plug 'whatyouhide/vim-lengthmatters'
 
 " ---------------------------------------------------------------------------------------------------------------------
 " External tools integration plugins
@@ -153,17 +157,17 @@ Plug 'tpope/vim-eunuch'
 " ---------------------------------------------------------------------------------------------------------------------
 
 " Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 " Additional text objects
-Plug 'wellle/targets.vim'
+"Plug 'wellle/targets.vim'
 " Surround (cs"')
 Plug 'tpope/vim-surround'
 " Easy alignment
-Plug 'godlygeek/tabular', { 'on':  'Tabularize' }
+"Plug 'godlygeek/tabular', { 'on':  'Tabularize' }
 " Safely editing in isolation
-Plug 'ferranpm/vim-isolate', { 'on':  ['Isolate', 'UnIsolate'] }
+"Plug 'ferranpm/vim-isolate', { 'on':  ['Isolate', 'UnIsolate'] }
 " Software capslock (gC in normal mode, <C-G>c in insert mode)
-Plug 'tpope/vim-capslock'
+"Plug 'tpope/vim-capslock'
 
 " ---------------------------------------------------------------------------------------------------------------------
 " Colorschemes
@@ -182,23 +186,23 @@ Plug 'nanotech/jellybeans.vim'
 " ---------------------------------------------------------------------------------------------------------------------
 
 " Easily expand selected region
-Plug 'terryma/vim-expand-region'
+"Plug 'terryma/vim-expand-region'
 " Search for highlighted work with *
-Plug 'thinca/vim-visualstar'
+"Plug 'thinca/vim-visualstar'
 " Intelligent buffer closing
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 " Iabbrev auto-correction library
-Plug 'chip/vim-fat-finger'
+"Plug 'chip/vim-fat-finger'
 " Hacker typing
-Plug 'natw/keyboard_cat.vim', { 'on':  'PlayMeOff' }
+"Plug 'natw/keyboard_cat.vim', { 'on':  'PlayMeOff' }
 " Man reading in vim
-Plug 'jez/vim-superman'
+"Plug 'jez/vim-superman'
 " Matchit enhances motions
 Plug 'edsono/vim-matchit'
 " More . repeat functionality
 Plug 'tpope/vim-repeat'
 " Delete all but current buffer
-Plug 'vim-scripts/BufOnly.vim'
+"Plug 'vim-scripts/BufOnly.vim'
 " Utils
 Plug '~/.config/nvim/localplug'
 
@@ -301,6 +305,8 @@ set fillchars="fold: "                      " Characters to fill the statuslines
 " 2.10 Omni completion settings
 " ---------------------------------------------------------------------------------------------------------------------
 set completeopt-=preview                    " Don't show preview scratch buffers
+set wildmenu
+set wildmode=longest,list
 set wildignore=*.o,*.obj,*~
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
@@ -412,6 +418,7 @@ vnoremap y y`]
 vnoremap p "_dP`]
 nnoremap p p`]
 
+
 " No more accidentally showing up command window (Use C-f to show it)
 map q: :q
 
@@ -436,8 +443,8 @@ map q: :q
 
 " Quick save and close buffer
 nnoremap ,w :w<CR>
-nnoremap <silent> ,c :Sayonara!<CR>
-nnoremap <silent> ,q :Sayonara<CR>
+"nnoremap <silent> ,c :Sayonara!<CR>
+"nnoremap <silent> ,q :Sayonara<CR>
 
 " Yank and paste from clipboard
 nnoremap ,y "+y
@@ -536,8 +543,8 @@ command! Profile :call utils#profile()
 " -----------------------------------------------------
 
 " Multipurpose tab key (inspired by Gary Bernhardt)
-inoremap <expr> <tab> utils#insertTabWrapper()
-inoremap <s-tab> <C-n>
+"inoremap <expr> <tab> utils#insertTabWrapper()
+"inoremap <s-tab> <C-n>
 "}}}
 
 " ======================================================================================================================
@@ -671,7 +678,7 @@ let g:gitgutter_sign_removed_first_line='-'
 " -----------------------------------------------------
 " 4.6 Vim JSX highlighting settings
 " -----------------------------------------------------
-let g:jsx_ext_required=0
+"let g:jsx_ext_required=0
 
 " -----------------------------------------------------
 " 4.7 Lightline settings
@@ -720,7 +727,7 @@ let g:neomake_error_sign = {
 " -----------------------------------------------------
 " 4.10 Ruby refactoring settings
 " -----------------------------------------------------
-let g:ruby_refactoring_map_keys=0
+"let g:ruby_refactoring_map_keys=0
 
 " -----------------------------------------------------
 " 4.11 NeoTerm settings
@@ -744,8 +751,8 @@ let g:clever_f_chars_match_any_signs=';'
 " -----------------------------------------------------
 " 4.14 Multiple cursors settings
 " -----------------------------------------------------
-let g:multi_cursor_exit_from_visual_mode=0
-let g:multi_cursor_exit_from_insert_mode=0
+"let g:multi_cursor_exit_from_visual_mode=0
+"let g:multi_cursor_exit_from_insert_mode=0
 
 " -----------------------------------------------------
 " 4.15 Vim Markdown settings
@@ -809,6 +816,7 @@ nnoremap <silent> <leader>j :call utils#uniteJumps()<CR>
 " My custom unite [m]enu with commonly used commands not mapped to keys
 nnoremap <silent> <leader>m :call utils#uniteCustomMenu()<CR>
 
+
 " -----------------------------------------------------
 " 5.2 Ultisnips
 " -----------------------------------------------------
@@ -818,12 +826,19 @@ let g:UltiSnipsExpandTrigger='<C-j>'
 let g:UltiSnipsListSnippets='<C-l>'
 let g:UltiSnipsJumpForwardTrigger='<C-j>'
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+autocmd FileType typescript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:SuperTabClosePreviewOnPopupClose = 1
+" or just disable the preview entirely
+"set completeopt-=preview"
 
 " -----------------------------------------------------
 " 5.3 Isolate
 " -----------------------------------------------------
-vnoremap ,i :Isolate<CR>
-nnoremap ,u :UnIsolate<CR>
+"vnoremap ,i :Isolate<CR>
+"nnoremap ,u :UnIsolate<CR>
 
 " -----------------------------------------------------
 " 5.4 Gitgutter
@@ -836,8 +851,8 @@ nnoremap ,hr :GitGutterRevertHunk<CR>
 " -----------------------------------------------------
 " 5.5 Expand region
 " -----------------------------------------------------
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+"vmap v <Plug>(expand_region_expand)
+"vmap <C-v> <Plug>(expand_region_shrink)
 
 " -----------------------------------------------------
 " 5.6 Vim Markdown
@@ -906,7 +921,7 @@ let g:terminal_color_foreground="#ebdbb2"
 " ======================================================================================================================
 "{{{
 autocmd FileType ruby,coffee,sass,scss,haml,slim,vim setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType html,htmldjango,xhtml,css,javascript,javascript.jsx,snippets setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType html,htmldjango,xhtml,css,javascript,javascript.jsx,typescript,snippets setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Keywordprg settings
 autocmd FileType vim setlocal keywordprg=:help
@@ -950,4 +965,4 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap ,, <c-^>
 set exrc " load .vimrc files
 set modelines=1 " look for modelines in files
-
+let g:deoplete#enable_at_startup = 1
