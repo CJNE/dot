@@ -27,7 +27,9 @@ Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 " Snippets support
 Plug 'tpope/vim-unimpaired'
 Plug 'SirVer/ultisnips'
+Plug 'jvanja/vim-bootstrap4-snippets'
 " Commenting support (gc)
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 " Multi-language testing support
 "Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestLast', 'TestNearest', 'TestSuite', 'TestVisit'] }
@@ -155,6 +157,7 @@ Plug 'KabbAmine/vCoolor.vim', { 'on': 'VCoolor' }
 Plug 'kassio/neoterm', { 'on': 'T' }
 " Unix commands integration
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------------------------------------------------
 " Text insertion/manipulation
@@ -654,14 +657,14 @@ let g:utils_autoswitch_kb_layout=0
 "      \       ['Unite yank history', 'call utils#uniteYankHistory()'],
 "      \       ['Unite jump history', 'call utils#uniteJumps()'],
 "      \     ]
-
-" -----------------------------------------------------
-" 4.3 NERDTree
-" -----------------------------------------------------
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeDirArrows=1
-let g:NERDTreeWinSize=55
-let g:NERDTreeAutoDeleteBuffer=1
+"
+"" -----------------------------------------------------
+"" 4.3 NERDTree
+"" -----------------------------------------------------
+"let g:NERDTreeMinimalUI=1
+"let g:NERDTreeDirArrows=1
+"let g:NERDTreeWinSize=55
+"let g:NERDTreeAutoDeleteBuffer=1
 
 " -----------------------------------------------------
 " 4.4 Ultisnips settings
@@ -789,10 +792,6 @@ let g:vim_markdown_folding_disabled=1
 "  nmap <silent> <buffer> m <Plug>(unite_toggle_mark_current_candidate)
 "endfunction
 "
-nnoremap <silent> ,b :Buffers<CR>
-nnoremap <silent> ,h :History:<CR>
-nnoremap <silent> ,a :Ag<CR>
-nnoremap <silent> <C-p> :GFiles --others --cached --exclude-standard<CR>
 "" Search files recursively ([o]pen file)
 "nnoremap <silent> <leader>o :call utils#uniteFileRec()<CR>
 "nnoremap <silent> <C-p> :call utils#uniteFileRec()<CR>
@@ -974,15 +973,7 @@ nnoremap ,, <c-^>
 set exrc " load .vimrc files
 set modelines=1 " look for modelines in files
 let g:deoplete#enable_at_startup = 1
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
+"FZF
 function! s:ag_to_qf(line)
   let parts = split(a:line, ':')
   return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
@@ -1009,5 +1000,26 @@ function! s:ag_handler(lines)
   endif
 endfunction
 
-command! -nargs=* Ag call fzf#run({ 'source':  printf('ag --nogroup --column --color "%s"', escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')), 'sink*':    function('<sid>ag_handler'), 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '. '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '. '--color hl:68,hl+:110', 'down':    '50%' })
-let g:fzf_layout = {'right': '~40%' }
+command! -nargs=* Ag call fzf#run({
+\ 'source':  printf('ag --nogroup --column --color "%s"',
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+\ 'sink*':    function('<sid>ag_handler'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+\            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
+\            '--color hl:68,hl+:110',
+\ 'down':    '50%'
+\ })
+let g:fzf_layout = { 'right': '~40%' }
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+nnoremap <C-p> :GFiles --others --cached --exclude-standard<CR>
+nnoremap ,a :Ag<CR>
+nnoremap ,b :Buffers<CR>
+nnoremap ,h :History:<CR>
