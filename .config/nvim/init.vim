@@ -26,6 +26,7 @@ Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 "Plug 'cohama/lexima.vim'
 " Snippets support
 Plug 'SirVer/ultisnips'
+Plug 'jvanja/vim-bootstrap4-snippets'
 " Commenting support (gc)
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
