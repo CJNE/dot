@@ -142,3 +142,7 @@ export GEM_PATH=/Users/johan/.chefdk/gem/ruby/2.1.0:/opt/chefdk/embedded/lib/rub
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 source ~/.gruvbox_256palette_osx.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

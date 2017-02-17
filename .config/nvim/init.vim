@@ -25,6 +25,7 @@ Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 " Automatically closing stuff
 "Plug 'cohama/lexima.vim'
 " Snippets support
+Plug 'tpope/vim-unimpaired'
 Plug 'SirVer/ultisnips'
 " Commenting support (gc)
 Plug 'tpope/vim-commentary'
@@ -61,15 +62,18 @@ Plug 'tpope/vim-commentary'
 Plug 'Shougo/deoplete.nvim'
 Plug 'ervandew/supertab'
 Plug 'mhartington/deoplete-typescript'
-Plug 'magarcia/vim-angular2-snippets'
+"Plug 'magarcia/vim-angular2-snippets'
 " JS syntax
 Plug 'othree/yajs.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 " JS libs syntax (React, Angular)
 Plug 'othree/javascript-libraries-syntax.vim'
 " JSX syntax (needs vim-javascript for indentation)
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 " Typescript syntax
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 " JSON syntax
 Plug 'sheerun/vim-json'
 
@@ -109,18 +113,18 @@ Plug 'honza/dockerfile.vim'
 " Unite fuzzy searcher
 " ---------------------------------------------------------------------------------------------------------------------
 
-" Unite files, buffers, command sources | Async source depends on vimproc
-Plug 'Shougo/unite.vim' | Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-" Outline source
-Plug 'Shougo/unite-outline'
-" History/yank source
-"Plug 'Shougo/neoyank.vim'
-" MRU source
-Plug 'Shougo/neomru.vim'
-" Tag source
-Plug 'tsukkee/unite-tag'
-" Colorscheme source
-Plug 'ujihisa/unite-colorscheme'
+"" Unite files, buffers, command sources | Async source depends on vimproc
+"Plug 'Shougo/unite.vim' | Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+"" Outline source
+"Plug 'Shougo/unite-outline'
+"" History/yank source
+""Plug 'Shougo/neoyank.vim'
+"" MRU source
+"Plug 'Shougo/neomru.vim'
+"" Tag source
+"Plug 'tsukkee/unite-tag'
+"" Colorscheme source
+"Plug 'ujihisa/unite-colorscheme'
 
 " ---------------------------------------------------------------------------------------------------------------------
 " Interface improving
@@ -515,28 +519,28 @@ cmap qq qall
 " 3.7 Custom commands and functions
 " -----------------------------------------------------
 
-" Generate tags definitions
-command! GenerateCT :call utils#generateCtags()
-command! GenerateJSCT :call utils#generateJSCtags()
-command! GenerateRubyCT :call utils#generateRubyCtags()
-
-" Open notes
-command! Notes :call utils#openNotes()
-
-" Run current file
-command! Run :call utils#runCurrentFile()
-nnoremap <silent> ,r :Run<CR>
-
-" Reformat whole or selection from file
-command! Format :call utils#formatFile()
-nnoremap <silent> ,f :Format<CR>
-
-" Annotate file (show values in special # => comments)
-command! Annotate :call utils#annotateFile()
-nnoremap <silent> ,a :Annotate<CR>
-
-" Profile
-command! Profile :call utils#profile()
+"" Generate tags definitions
+"command! GenerateCT :call utils#generateCtags()
+"command! GenerateJSCT :call utils#generateJSCtags()
+"command! GenerateRubyCT :call utils#generateRubyCtags()
+"
+"" Open notes
+"command! Notes :call utils#openNotes()
+"
+"" Run current file
+"command! Run :call utils#runCurrentFile()
+"nnoremap <silent> ,r :Run<CR>
+"
+"" Reformat whole or selection from file
+"command! Format :call utils#formatFile()
+"nnoremap <silent> ,f :Format<CR>
+"
+"" Annotate file (show values in special # => comments)
+"command! Annotate :call utils#annotateFile()
+"nnoremap <silent> ,a :Annotate<CR>
+"
+"" Profile
+"command! Profile :call utils#profile()
 
 " -----------------------------------------------------
 " 3.8 TAB autocomplete mappings
@@ -557,99 +561,99 @@ command! Profile :call utils#profile()
 " -----------------------------------------------------
 let g:utils_autoswitch_kb_layout=0
 
-" -----------------------------------------------------
-" 4.2 Unite
-" -----------------------------------------------------
-
-" Matcher settings
-call unite#filters#matcher_default#use(['matcher_fuzzy', 'matcher_hide_current_file'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-" Use ag if available
-if executable('ag')
-  let g:unite_source_grep_command='ag'
-  let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C0'
-  let g:unite_source_grep_recursive_opt=''
-
-  " Set rec source command
-  let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-endif
-
-" Custom profile
-call unite#custom#profile('default', 'context', {
-      \   'prompt': '» ',
-      \   'winheight': 15,
-      \ })
-
-" Add syntax highlighting
-let g:unite_source_line_enable_highlight=1
-
-" Custom unite menus
-let g:unite_source_menu_menus = {}
-
-" Utils menu
-let g:unite_source_menu_menus.utils = {
-      \     'description' : 'Utility commands',
-      \ }
-let g:unite_source_menu_menus.utils.command_candidates = [
-      \       ['Color picker', 'VCoolor'],
-      \       ['Run XMPFilter', 'Annotate'],
-      \       ['Format file', 'Format'],
-      \       ['Run file', 'Run'],
-      \       ['Generate Ctags', 'GenerateCT'],
-      \       ['Generate JS Ctags', 'GenerateJSCT'],
-      \       ['Show notes', 'Notes'],
-      \     ]
-
-" Git menu
-let g:unite_source_menu_menus.git = {
-      \     'description' : 'Git commands',
-      \ }
-let g:unite_source_menu_menus.git.command_candidates = [
-      \       ['Stage hunk', 'GitGutterStageHunk'],
-      \       ['Unstage hunk', 'GitGutterRevertHunk'],
-      \       ['Stage', 'Gwrite'],
-      \       ['Status', 'Gstatus'],
-      \       ['Diff', 'Gvdiff'],
-      \       ['Commit', 'Gcommit --verbose'],
-      \       ['Revert', 'Gread'],
-      \       ['Log', 'Glog'],
-      \       ['Visual Log', 'Gitv'],
-      \     ]
-
-" Plug menu
-let g:unite_source_menu_menus.plug = {
-      \     'description' : 'Plugin management commands',
-      \ }
-let g:unite_source_menu_menus.plug.command_candidates = [
-      \       ['Install plugins', 'PlugInstall'],
-      \       ['Update plugins', 'PlugUpdate'],
-      \       ['Clean plugins', 'PlugClean'],
-      \       ['Upgrade vim-plug', 'PlugUpgrade'],
-      \     ]
-
-" My unite menu
-let g:unite_source_menu_menus.unite = {
-      \     'description' : 'My Unite sources',
-      \ }
-let g:unite_source_menu_menus.unite.command_candidates = [
-      \       ['Unite MRUs', 'call utils#uniteMRUs()'],
-      \       ['Unite buffers', 'call utils#uniteBuffers()'],
-      \       ['Unite file browse', 'call utils#uniteFileBrowse()'],
-      \       ['Unite file search', 'call utils#uniteFileRec()'],
-      \       ['Unite grep', 'call utils#uniteGrep()'],
-      \       ['Unite history', 'call utils#uniteHistory()'],
-      \       ['Unite line search', 'call utils#uniteLineSearch()'],
-      \       ['Unite menu', 'call utils#uniteCustomMenu()'],
-      \       ['Unite registers', 'call utils#uniteRegisters()'],
-      \       ['Unite snippets', 'call utils#uniteSnippets()'],
-      \       ['Unite sources', 'call utils#uniteSources()'],
-      \       ['Unite file tags (symbols)', 'call utils#uniteOutline()'],
-      \       ['Unite tags', 'call utils#uniteTags()'],
-      \       ['Unite windows', 'call utils#uniteWindows()'],
-      \       ['Unite yank history', 'call utils#uniteYankHistory()'],
-      \       ['Unite jump history', 'call utils#uniteJumps()'],
-      \     ]
+"" -----------------------------------------------------
+"" 4.2 Unite
+"" -----------------------------------------------------
+"
+"" Matcher settings
+"call unite#filters#matcher_default#use(['matcher_fuzzy', 'matcher_hide_current_file'])
+"call unite#filters#sorter_default#use(['sorter_rank'])
+"
+"" Use ag if available
+"if executable('ag')
+"  let g:unite_source_grep_command='ag'
+"  let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C0'
+"  let g:unite_source_grep_recursive_opt=''
+"
+"  " Set rec source command
+"  let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+"endif
+"
+"" Custom profile
+"call unite#custom#profile('default', 'context', {
+"      \   'prompt': '» ',
+"      \   'winheight': 15,
+"      \ })
+"
+"" Add syntax highlighting
+"let g:unite_source_line_enable_highlight=1
+"
+"" Custom unite menus
+"let g:unite_source_menu_menus = {}
+"
+"" Utils menu
+"let g:unite_source_menu_menus.utils = {
+"      \     'description' : 'Utility commands',
+"      \ }
+"let g:unite_source_menu_menus.utils.command_candidates = [
+"      \       ['Color picker', 'VCoolor'],
+"      \       ['Run XMPFilter', 'Annotate'],
+"      \       ['Format file', 'Format'],
+"      \       ['Run file', 'Run'],
+"      \       ['Generate Ctags', 'GenerateCT'],
+"      \       ['Generate JS Ctags', 'GenerateJSCT'],
+"      \       ['Show notes', 'Notes'],
+"      \     ]
+"
+"" Git menu
+"let g:unite_source_menu_menus.git = {
+"      \     'description' : 'Git commands',
+"      \ }
+"let g:unite_source_menu_menus.git.command_candidates = [
+"      \       ['Stage hunk', 'GitGutterStageHunk'],
+"      \       ['Unstage hunk', 'GitGutterRevertHunk'],
+"      \       ['Stage', 'Gwrite'],
+"      \       ['Status', 'Gstatus'],
+"      \       ['Diff', 'Gvdiff'],
+"      \       ['Commit', 'Gcommit --verbose'],
+"      \       ['Revert', 'Gread'],
+"      \       ['Log', 'Glog'],
+"      \       ['Visual Log', 'Gitv'],
+"      \     ]
+"
+"" Plug menu
+"let g:unite_source_menu_menus.plug = {
+"      \     'description' : 'Plugin management commands',
+"      \ }
+"let g:unite_source_menu_menus.plug.command_candidates = [
+"      \       ['Install plugins', 'PlugInstall'],
+"      \       ['Update plugins', 'PlugUpdate'],
+"      \       ['Clean plugins', 'PlugClean'],
+"      \       ['Upgrade vim-plug', 'PlugUpgrade'],
+"      \     ]
+"
+"" My unite menu
+"let g:unite_source_menu_menus.unite = {
+"      \     'description' : 'My Unite sources',
+"      \ }
+"let g:unite_source_menu_menus.unite.command_candidates = [
+"      \       ['Unite MRUs', 'call utils#uniteMRUs()'],
+"      \       ['Unite buffers', 'call utils#uniteBuffers()'],
+"      \       ['Unite file browse', 'call utils#uniteFileBrowse()'],
+"      \       ['Unite file search', 'call utils#uniteFileRec()'],
+"      \       ['Unite grep', 'call utils#uniteGrep()'],
+"      \       ['Unite history', 'call utils#uniteHistory()'],
+"      \       ['Unite line search', 'call utils#uniteLineSearch()'],
+"      \       ['Unite menu', 'call utils#uniteCustomMenu()'],
+"      \       ['Unite registers', 'call utils#uniteRegisters()'],
+"      \       ['Unite snippets', 'call utils#uniteSnippets()'],
+"      \       ['Unite sources', 'call utils#uniteSources()'],
+"      \       ['Unite file tags (symbols)', 'call utils#uniteOutline()'],
+"      \       ['Unite tags', 'call utils#uniteTags()'],
+"      \       ['Unite windows', 'call utils#uniteWindows()'],
+"      \       ['Unite yank history', 'call utils#uniteYankHistory()'],
+"      \       ['Unite jump history', 'call utils#uniteJumps()'],
+"      \     ]
 
 " -----------------------------------------------------
 " 4.3 NERDTree
@@ -769,52 +773,56 @@ let g:vim_markdown_folding_disabled=1
 " 5.1 Unite and extensions
 " -----------------------------------------------------
 
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Enable navigation with control-j and control-k in insert mode
-  imap <silent> <buffer> <C-j> <Plug>(unite_select_next_line)
-  imap <silent> <buffer> <C-k> <Plug>(unite_select_previous_line)
-  " Runs 'splits' action by <C-s> and <C-v>
-  imap <silent> <buffer> <expr> <C-s> unite#do_action('split')
-  imap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-  " Exit with escape
-  nmap <silent> <buffer> <ESC> <Plug>(unite_exit)
-  " Mark candidates
-  vmap <silent> <buffer> m <Plug>(unite_toggle_mark_selected_candidates)
-  nmap <silent> <buffer> m <Plug>(unite_toggle_mark_current_candidate)
-endfunction
-
-" Search files recursively ([o]pen file)
-nnoremap <silent> <leader>o :call utils#uniteFileRec()<CR>
-nnoremap <silent> <C-p> :call utils#uniteFileRec()<CR>
-" Browse [f]iles in CWD
-nnoremap <silent> <leader>f :call utils#uniteFileBrowse()<CR>
-" [U]nite sources
-nnoremap <silent> <leader>u :call utils#uniteSources()<CR>
-" Search between open files - [b]uffers
-nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
-nnoremap <silent> ,b :call utils#uniteBuffers()<CR>
-" Search in current file ou[t]line (tags in current file)
-nnoremap <silent> <leader>t :call utils#uniteOutline()<CR>
-" Search for term - [g]rep
-nnoremap <silent> <leader>g :call utils#uniteGrep()<CR>
-" Search in edit [h]istory
-nnoremap <silent> <leader>h :call utils#uniteHistory()<CR>
-" Search in [l]ines on current buffer
-nnoremap <silent> <leader>l :call utils#uniteLineSearch()<CR>
-" Search in [y]ank history
-nnoremap <silent> <leader>y :call utils#uniteYankHistory()<CR>
-" Search in [r]egisters
-nnoremap <silent> <leader>r :call utils#uniteRegisters()<CR>
-" Search in opened [w]indow splits
-nnoremap <silent> <leader>w :call utils#uniteWindows()<CR>
-" Search in ultisnips [s]nippets
-nnoremap <silent> <leader>s :call utils#uniteSnippets()<CR>
-" Search in latest [j]ump positions
-nnoremap <silent> <leader>j :call utils#uniteJumps()<CR>
-" My custom unite [m]enu with commonly used commands not mapped to keys
-nnoremap <silent> <leader>m :call utils#uniteCustomMenu()<CR>
+"" Custom mappings for the unite buffer
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+"  " Enable navigation with control-j and control-k in insert mode
+"  imap <silent> <buffer> <C-j> <Plug>(unite_select_next_line)
+"  imap <silent> <buffer> <C-k> <Plug>(unite_select_previous_line)
+"  " Runs 'splits' action by <C-s> and <C-v>
+"  imap <silent> <buffer> <expr> <C-s> unite#do_action('split')
+"  imap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+"  " Exit with escape
+"  nmap <silent> <buffer> <ESC> <Plug>(unite_exit)
+"  " Mark candidates
+"  vmap <silent> <buffer> m <Plug>(unite_toggle_mark_selected_candidates)
+"  nmap <silent> <buffer> m <Plug>(unite_toggle_mark_current_candidate)
+"endfunction
+"
+nnoremap <silent> ,b :Buffers<CR>
+nnoremap <silent> ,h :History:<CR>
+nnoremap <silent> ,a :Ag<CR>
+nnoremap <silent> <C-p> :GFiles --others --cached --exclude-standard<CR>
+"" Search files recursively ([o]pen file)
+"nnoremap <silent> <leader>o :call utils#uniteFileRec()<CR>
+"nnoremap <silent> <C-p> :call utils#uniteFileRec()<CR>
+"" Browse [f]iles in CWD
+"nnoremap <silent> <leader>f :call utils#uniteFileBrowse()<CR>
+"" [U]nite sources
+"nnoremap <silent> <leader>u :call utils#uniteSources()<CR>
+"" Search between open files - [b]uffers
+"nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
+"nnoremap <silent> ,b :call utils#uniteBuffers()<CR>
+"" Search in current file ou[t]line (tags in current file)
+"nnoremap <silent> <leader>t :call utils#uniteOutline()<CR>
+"" Search for term - [g]rep
+"nnoremap <silent> <leader>g :call utils#uniteGrep()<CR>
+"" Search in edit [h]istory
+"nnoremap <silent> <leader>h :call utils#uniteHistory()<CR>
+"" Search in [l]ines on current buffer
+"nnoremap <silent> <leader>l :call utils#uniteLineSearch()<CR>
+"" Search in [y]ank history
+"nnoremap <silent> <leader>y :call utils#uniteYankHistory()<CR>
+"" Search in [r]egisters
+"nnoremap <silent> <leader>r :call utils#uniteRegisters()<CR>
+"" Search in opened [w]indow splits
+"nnoremap <silent> <leader>w :call utils#uniteWindows()<CR>
+"" Search in ultisnips [s]nippets
+"nnoremap <silent> <leader>s :call utils#uniteSnippets()<CR>
+"" Search in latest [j]ump positions
+"nnoremap <silent> <leader>j :call utils#uniteJumps()<CR>
+"" My custom unite [m]enu with commonly used commands not mapped to keys
+"nnoremap <silent> <leader>m :call utils#uniteCustomMenu()<CR>
 
 
 " -----------------------------------------------------
@@ -956,7 +964,7 @@ autocmd BufWritePost *.scss Neomake scsslint
 " apt-get install shellcheck
 autocmd BufWritePost *.sh Neomake shellcheck
 " pip3 install vim-vint
-autocmd BufWritePost *.vim Neomake vint
+"autocmd BufWritePost *.vim Neomake vint
 "}}}
 " ---------------------------------------------------
 "  8.0 Johan
@@ -966,3 +974,40 @@ nnoremap ,, <c-^>
 set exrc " load .vimrc files
 set modelines=1 " look for modelines in files
 let g:deoplete#enable_at_startup = 1
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+function! s:ag_to_qf(line)
+  let parts = split(a:line, ':')
+  return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
+        \ 'text': join(parts[3:], ':')}
+endfunction
+
+function! s:ag_handler(lines)
+  if len(a:lines) < 2 | return | endif
+
+  let cmd = get({'ctrl-x': 'split',
+               \ 'ctrl-v': 'vertical split',
+               \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+  let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+
+  let first = list[0]
+  execute cmd escape(first.filename, ' %#\')
+  execute first.lnum
+  execute 'normal!' first.col.'|zz'
+
+  if len(list) > 1
+    call setqflist(list)
+    copen
+    wincmd p
+  endif
+endfunction
+
+command! -nargs=* Ag call fzf#run({ 'source':  printf('ag --nogroup --column --color "%s"', escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')), 'sink*':    function('<sid>ag_handler'), 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '. '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '. '--color hl:68,hl+:110', 'down':    '50%' })
+let g:fzf_layout = {'right': '~40%' }
