@@ -21,7 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
 " ---------------------------------------------------------------------------------------------------------------------
 
 " Asynchronous maker and linter (needs linters to work)
-Plug 'benekastah/neomake', { 'on': ['Neomake'] }
+" Plug 'benekastah/neomake', { 'on': ['Neomake'] }
 " Automatically closing stuff
 "Plug 'cohama/lexima.vim'
 " Snippets support
@@ -35,6 +35,20 @@ Plug 'tpope/vim-commentary'
 "Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestLast', 'TestNearest', 'TestSuite', 'TestVisit'] }
 " CamelCase and snake_case motions
 "Plug 'bkad/CamelCaseMotion'
+
+Plug 'w0rp/ale'
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint' ],
+\   'json': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_linters_ignore = {'typescript': ['tslint']}
+
+"let b:ale_fixers = ['prettier', 'eslint']
+
+"let g:ale_fix_on_save = 1
 
 " ---------------------------------------------------------------------------------------------------------------------
 " Ruby/Rails
@@ -685,7 +699,7 @@ let g:gitgutter_sign_removed_first_line='-'
 " -----------------------------------------------------
 " 4.6 Vim JSX highlighting settings
 " -----------------------------------------------------
-"let g:jsx_ext_required=0
+let g:jsx_ext_required=1
 
 " -----------------------------------------------------
 " 4.7 Lightline settings
@@ -721,16 +735,16 @@ let g:vcoolor_disable_mappings=1
 " -----------------------------------------------------
 " 4.9 Neomake settings
 " -----------------------------------------------------
-let g:neomake_verbose=0
-let g:neomake_warning_sign = {
-      \ 'text': '>',
-      \ 'texthl': 'WarningMsg',
-      \ }
-let g:neomake_error_sign = {
-      \ 'text': '>',
-      \ 'texthl': 'ErrorMsg',
-      \ }
-
+"let g:neomake_verbose=0
+"let g:neomake_warning_sign = {
+"      \ 'text': '>',
+"      \ 'texthl': 'WarningMsg',
+"      \ }
+"let g:neomake_error_sign = {
+"      \ 'text': '>',
+"      \ 'texthl': 'ErrorMsg',
+"      \ }
+"
 " -----------------------------------------------------
 " 4.10 Ruby refactoring settings
 " -----------------------------------------------------
@@ -937,7 +951,7 @@ autocmd FileType vim setlocal keywordprg=:help
 autocmd BufNewFile,BufRead *.md setlocal spell
 
 " Remove trailing whitespaces automatically before save
-autocmd BufWritePre * call utils#stripTrailingWhitespaces()
+"autocmd BufWritePre * call utils#stripTrailingWhitespaces()
 
 " Resize splits when the window is resized
 autocmd VimResized * :wincmd =
@@ -952,16 +966,16 @@ end
 " 7.1 Run linters after save
 " -----------------------------------------------------
 
-" npm install -g eslint
-autocmd BufWritePost *.js Neomake eslint
-" gem install rubocop
-autocmd BufWritePost *.rb Neomake rubocop
-" apt-get install tidy
-autocmd BufWritePost *.html Neomake tidy
-" gem install scsslint
-autocmd BufWritePost *.scss Neomake scsslint
-" apt-get install shellcheck
-autocmd BufWritePost *.sh Neomake shellcheck
+"" npm install -g eslint
+"autocmd BufWritePost *.js Neomake eslint
+"" gem install rubocop
+"autocmd BufWritePost *.rb Neomake rubocop
+"" apt-get install tidy
+"autocmd BufWritePost *.html Neomake tidy
+"" gem install scsslint
+"autocmd BufWritePost *.scss Neomake scsslint
+"" apt-get install shellcheck
+"autocmd BufWritePost *.sh Neomake shellcheck
 " pip3 install vim-vint
 "autocmd BufWritePost *.vim Neomake vint
 "}}}
@@ -1023,3 +1037,5 @@ nnoremap <C-p> :GFiles --others --cached --exclude-standard<CR>
 nnoremap ,a :Ag<CR>
 nnoremap ,b :Buffers<CR>
 nnoremap ,h :History:<CR>
+
+nnoremap ,d :ALEFix<CR>

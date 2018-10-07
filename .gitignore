@@ -260,3 +260,15 @@ Fusion 360 CAM
 .config/SweetScape
 .config/configstore
 .config/nvim/plugged
+.adobe
+.babel.json
+.composer
+.electron
+.gordon
+.iterm2
+.iterm2_shell_integration.zsh
+.pydistutils.cfg
+.serverless
+.v8flags*
+npm-debug.log
+johan@generatorhallen.se Creative Cloud Files

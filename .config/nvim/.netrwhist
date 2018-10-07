@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/johan/work/tsr/simsfiles/sims3/types'
+let g:netrw_dirhist_2='/Users/johan/work/tsr/simsfiles/sims3'
+let g:netrw_dirhist_3='/Users/johan/work/workoutempire/weship/lambda/dhl/shopify/returns'
+let g:netrw_dirhist_4='/Users/johan/work/workoutempire/ngweship'
+let g:netrw_dirhist_5='/Users/johan/work/workoutempire/ngweship/lambdas/storeinventorysync'
+let g:netrw_dirhist_6='/Users/johan/work/workoutempire/ngweship/lambdas/shopifyhooks'
+let g:netrw_dirhist_7='/Users/johan/t'
