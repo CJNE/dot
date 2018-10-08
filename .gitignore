@@ -272,3 +272,11 @@ Fusion 360 CAM
 .v8flags*
 npm-debug.log
 johan@generatorhallen.se Creative Cloud Files
+.credentials
+.dinghy
+.nvimlog
+.pyenv
+.wine
+.vscode
+.config/gcloud
+.config/filezilla
